@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/listar', [EstudiantesController::class, 'listar']);
-Route::post('/crear', [EstudiantesController::class, 'crear']);
-Route::post('/actualizar', [EstudiantesController::class, 'actualizar']);
-Route::post('/estado', [EstudiantesController::class, 'cambiarEstado']);
+// Route::get('/listar', [EstudiantesController::class, 'listar']);
+// Route::post('/crear', [EstudiantesController::class, 'crear']);
+// Route::post('/actualizar', [EstudiantesController::class, 'actualizar']);
+// Route::post('/estado', [EstudiantesController::class, 'cambiarEstado']);

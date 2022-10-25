@@ -20,8 +20,8 @@ use App\Http\Controllers\EstudiantesController;
 //     return $request->user();
 // });
 
-// Route::get('/listar', [EstudiantesController::class, 'listar']);
-// Route::post('/crear', [EstudiantesController::class, 'crear']);
-// Route::post('/actualizar', [EstudiantesController::class, 'actualizar']);
-// Route::post('/estado', [EstudiantesController::class, 'cambiarEstado']);
+Route::get('/listar', [EstudiantesController::class, 'listar']);
+Route::post('/crear', [EstudiantesController::class, 'crear']);
+Route::post('/actualizar', [EstudiantesController::class, 'actualizar']);
+Route::post('/estado', [EstudiantesController::class, 'cambiarEstado']);
 
