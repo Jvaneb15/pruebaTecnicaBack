@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Models\Estudiantes;
+use App\Models\TipoDocumento;
+use App\Models\Curso;
 
 class EstudiantesController extends Controller
 {
@@ -27,6 +29,23 @@ class EstudiantesController extends Controller
         
     }
 
+    public function editar($id) {
+        try {
+            $infoAlumnoEditar = Estudiantes::where('id', $id)->get();
+
+            return response()->json([
+                'success' => true,
+                'data' => $infoAlumnoEditar
+            ], 200);
+
+        } catch (Error $err) {
+            return response()->json([
+                'success' => false,
+                'data'=>json_encode($err->getMessage())
+            ], 500);
+        }
+    }
+
     public function crear(Request $request) {
         try {
             $crear = Estudiantes::create([
@@ -36,7 +55,7 @@ class EstudiantesController extends Controller
                 'direccion' => $request->direccion,
                 'email' => $request->email,
                 'numero_documento' => $request->numero_documento,
-                'activo' => $request->activo,
+                'activo' => 1,
                 'id_curso' => $request->id_curso,
                 'id_tipo_documento' => $request->id_tipo_documento
             ]);
@@ -95,6 +114,40 @@ class EstudiantesController extends Controller
                 'message' => 'Estado actualizado con éxito'
             ]);
             
+        } catch (Error $err) {
+            return response()->json([
+                'success' => false,
+                'data'=>json_encode($err->getMessage())
+            ], 500);
+        }
+    }
+
+    public function listarTipoDocumento() {
+        try {
+            $listarTipoDocumento = TipoDocumento::all();
+
+            return response()->json([
+                'success' => true,
+                'data' => $listarTipoDocumento
+            ], 200);
+
+        } catch (Error $err) {
+            return response()->json([
+                'success' => false,
+                'data'=>json_encode($err->getMessage())
+            ], 500);
+        }
+    }
+
+    public function listarCursos() {
+        try {
+            $listarCursos = Curso::all();
+
+            return response()->json([
+                'success' => true,
+                'data' => $listarCursos
+            ]);
+
         } catch (Error $err) {
             return response()->json([
                 'success' => false,

@@ -20,8 +20,16 @@ use App\Http\Controllers\EstudiantesController;
 //     return $request->user();
 // });
 
+//CRUD Alumnos
 Route::get('/listar', [EstudiantesController::class, 'listar']);
 Route::post('/crear', [EstudiantesController::class, 'crear']);
 Route::post('/actualizar', [EstudiantesController::class, 'actualizar']);
 Route::post('/estado', [EstudiantesController::class, 'cambiarEstado']);
+Route::get('/editarAlumno/{id}', [EstudiantesController::class, 'editar']);
+
+//Listar tipo documentos
+Route::get('/listarTipoDocumento', [EstudiantesController::class, 'listarTipoDocumento']);
+
+//Lista cursos
+Route::get('/listarCursos', [EstudiantesController::class, 'listarCursos']);
 
